@@ -3,28 +3,31 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
 
     <xacro:include filename="$(find tutorial)/urdf/arm.xacro" />
-    <xacro:include filename="$(find tutorial)/urdf/head.xacro" />
+    <xacro:include filename="$(find tutorial)/urdf/caster_wheel.xacro" />
+    <!-- <xacro:include filename="$(find tutorial)/urdf/head.xacro" /> -->
     
     <link name="base_link">
         <visual>
             <geometry>
-                <box size="1 1 1"/>
+                <cylinder length="0.0577" radius="0.0704"/>
             </geometry>
         </visual>
         <collision>
             <geometry>
-                <box size="1 1 1"/>
+                <cylinder length="0.0577" radius="0.0704"/>
             </geometry>
         </collision>
         <inertial>
-            <mass value="1"/>
-            <inertia ixx="0.21" ixy="0" ixz="0" iyy="0.27" iyz="0" izz="0.10"/>
+            <mass value="0.6"/>
+            <inertia ixx="${1/12*0.6*(3*0.0704*0.0704+0.0577*0.0577)}" ixy="0" ixz="0" iyy="${1/12*0.6*(3*0.0704*0.0704+0.0577*0.0577)}" iyz="0" izz="${1/2*0.6*0.0704*0.0704}"/>
         </inertial>
     </link>
     
-    <xacro:arm prefix="right" length=".7" radius=".2" reflect="1" />
-    <xacro:arm prefix="left" length=".7" radius=".2" reflect="-1" />
-    <xacro:head />
+    <xacro:arm prefix="right" length=".0059" radius=".021" reflect="0.0527" />
+    <xacro:arm prefix="left" length=".0059" radius=".021" reflect="-0.0527" />
+    <xacro:caster_wheel prefix="front" radius=".021" xoffset="0.050" zoffset="-0.0211" />
+    <xacro:caster_wheel prefix="rear" radius=".021" xoffset="-0.050" zoffset="-0.0211" />
+    <!-- <xacro:head /> -->
     
     <!-- Add ROS plugin so we can interact with our robot -->
     <gazebo>

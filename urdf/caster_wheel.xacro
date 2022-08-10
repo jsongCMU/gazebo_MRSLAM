@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
+<xacro:macro name="caster_wheel" params="prefix radius xoffset zoffset">
+
+    <!-- rpy (roll pitch yaw) describes rotation in radians -->
+    <!-- xyz describes translation in meters -->
+    <link name="${prefix}_caster_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="0.010"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <sphere radius="0.010"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1"/>
+            <inertia ixx="${2/5*0.1*radius*radius}" ixy="0" ixz="0" iyy="${2/5*0.1*radius*radius}" iyz="0" izz="${2/5*0.1*radius*radius}"/>
+        </inertial>
+    </link>
+
+
+    <joint name="base_to_${prefix}_caster_wheel" type="fixed">
+        <parent link="base_link"/>
+        <child link="${prefix}_caster_wheel"/>
+        <origin rpy="0 0 0" xyz="${xoffset} 0 ${zoffset}"/> <!-- move the child_frame with respect to parent_frame -->
+    </joint>
+
+
+</xacro:macro>
+</robot>
+

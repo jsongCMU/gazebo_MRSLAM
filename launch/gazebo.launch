@@ -41,8 +41,8 @@
         type="spawner"
         args="joint_state_controller
               right_arm_controller
-              left_arm_controller
-              head_controller" />
+              left_arm_controller" />
+              <!-- head_controller" /> -->
 </launch>
 
 
