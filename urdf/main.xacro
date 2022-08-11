@@ -4,7 +4,7 @@
 
     <xacro:include filename="$(find tutorial)/urdf/arm.xacro" />
     <xacro:include filename="$(find tutorial)/urdf/caster_wheel.xacro" />
-    <!-- <xacro:include filename="$(find tutorial)/urdf/head.xacro" /> -->
+    <xacro:include filename="$(find tutorial)/urdf/head.xacro" />
     
     <link name="base_link">
         <visual>
@@ -27,7 +27,7 @@
     <xacro:arm prefix="left" length=".0059" radius=".021" reflect="-0.0527" />
     <xacro:caster_wheel prefix="front" radius=".021" xoffset="0.050" zoffset="-0.0211" />
     <xacro:caster_wheel prefix="rear" radius=".021" xoffset="-0.050" zoffset="-0.0211" />
-    <!-- <xacro:head /> -->
+    <xacro:head />
     
     <!-- Add ROS plugin so we can interact with our robot -->
     <gazebo>
