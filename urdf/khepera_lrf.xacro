@@ -4,8 +4,27 @@
 
   <link name="lrf_link">
     <visual>
+      <origin xyz="0 0 0.003" rpy="0 0 0"/>
       <geometry>
-        <cylinder radius="0.028" length="0.070"/>
+        <cylinder radius="0.021" length="0.029"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="-0.021 0 0.003" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.005 0.010 0.029"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.032" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.050 0.050 0.041"/>
+      </geometry>
+    </visual>
+    <visual>
+      <origin xyz="0 0 -0.065" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.100 0.080 0.025"/>
       </geometry>
     </visual>
   </link>
@@ -13,13 +32,14 @@
   <joint name="base_to_lrf" type="fixed">
     <parent link="base_link"/>
     <child link="lrf_link"/>
-    <origin xyz="0 0 0.1" rpy="0 0 0"/>
+    <origin xyz="0 0 0.1355" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="lrf_link">
+    <material>Gazebo/DarkGrey</material>
     <sensor type="ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
-      <visualize>false</visualize>
+      <visualize>true</visualize>
       <update_rate>40</update_rate>
       <ray>
         <scan>
