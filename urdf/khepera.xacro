@@ -47,22 +47,6 @@
   <xacro:khepera_wheel prefix="right" offset_dir="-1" />
   <xacro:khepera_camera />
   <xacro:khepera_lrf />
-  
-  <!-- <link name="gyro">
-  </link>
-  <joint name="base_link_gyro_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="gyro"/>
-    <origin xyz="0 0.029 0" rpy="0 0 0"/>
-  </joint>
-  
-  <link name="accelerometer">
-  </link>
-  <joint name="base_link_accelerometer_joint" type="fixed">
-    <parent link="base_link"/>
-    <child link="accelerometer"/>
-    <origin xyz="0 0.029 0" rpy="0 0 0"/>
-  </joint> -->
 
   <!-- Differential drive controller -->
   <gazebo>
