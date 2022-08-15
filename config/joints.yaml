@@ -2,10 +2,10 @@ joint_state_controller:
   type: "joint_state_controller/JointStateController"
   publish_rate: 50
 
-right_arm_controller:
+right_wheel_controller:
   type: "velocity_controllers/JointVelocityController"
-  joint: base_to_right_arm
+  joint: base_to_right_wheel
 
-left_arm_controller:
+left_wheel_controller:
   type: "velocity_controllers/JointVelocityController"
-  joint: base_to_left_arm
+  joint: base_to_left_wheel

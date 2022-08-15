@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <launch>
   <!-- our xacro/urdf model -->
-  <!-- <arg name="model" value="$(find tutorial)/urdf/main.xacro"/> -->
   <arg name="model" value="$(find tutorial)/urdf/khepera.xacro"/>
 
   <!-- load our urdf model (string) into global parameter called "robot_description"-->
@@ -41,8 +40,8 @@
         pkg="controller_manager"
         type="spawner"
         args="joint_state_controller
-              right_arm_controller
-              left_arm_controller" />
+              right_wheel_controller
+              left_wheel_controller" />
 </launch>
 
 
