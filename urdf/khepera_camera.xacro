@@ -5,7 +5,7 @@
   <link name="camera_link">
     <visual>
       <geometry>
-        <sphere radius="0.001"/>
+        <sphere radius="0.0125"/>
       </geometry>
     </visual>
   </link>
@@ -17,6 +17,7 @@
   </joint>
 
   <gazebo reference="camera_link">
+    <material>Gazebo/DarkGrey</material>
     <sensor type="camera" name="camera1">
       <update_rate>30.0</update_rate>
       <camera name="camera">

@@ -37,6 +37,10 @@
     </inertial>
   </link>
 
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+  </gazebo>
+
   <xacro:khepera_caster_wheel prefix="front" offset_dir="1" />
   <xacro:khepera_caster_wheel prefix="rear" offset_dir="-1" />
   <xacro:khepera_wheel prefix="left" offset_dir="1" />
