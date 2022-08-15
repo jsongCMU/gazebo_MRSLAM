@@ -72,11 +72,11 @@
       <!-- Odometry frame, defaults to `odom` -->
       <odometryFrame>odom</odometryFrame>
       <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
-      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
       <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
       <odometrySource>0</odometrySource>
       <!-- Set to true to publish transforms for the wheel links, defaults to false -->
-      <publishWheelTF>true</publishWheelTF>
+      <publishWheelTF>false</publishWheelTF>
       <!-- Set to true to publish transforms for the odometry, defaults to true -->
       <publishOdom>true</publishOdom>
       <!-- Set to true to publish sensor_msgs/JointState on /joint_states for the wheel joints, defaults to false -->
