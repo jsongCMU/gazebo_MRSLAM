@@ -31,16 +31,6 @@
     <origin xyz="0 ${offset_dir*0.0527} 0.021" rpy="1.570796 0 -1.570796"/>
   </joint>
 
-  <transmission name="${prefix}_wheel_transmission">
-    <type>transmission_interface/SimpleTransmission</type>
-    <actuator name="$${prefix}_wheel_motor">
-      <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-    <joint name="base_to_${prefix}_wheel">
-      <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-  </transmission>
-
 </xacro:macro>
 </robot>
 

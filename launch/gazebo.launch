@@ -17,7 +17,6 @@
     <arg name="headless" value="false"/>
   </include>
 
-
   <!-- Spawn our robot using urdf_spawner node -->
   <node name="urdf_spawner"
         pkg="gazebo_ros"
@@ -30,18 +29,6 @@
               -model robot
               -param robot_description"/>
 
-  <!-- load multiple values stored in .yaml file into global parameters -->
-  <!-- parameters store motor controller configurations -->
-  <rosparam command="load"
-            file="$(find tutorial)/config/joints.yaml" />
-  
-  <!-- Spawn controllers -->
-  <node name="bot_controller_spawner"
-        pkg="controller_manager"
-        type="spawner"
-        args="joint_state_controller
-              right_wheel_controller
-              left_wheel_controller" />
 </launch>
 
 
