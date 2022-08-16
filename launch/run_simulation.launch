@@ -17,11 +17,15 @@
   </include>
 
   <!-- Spawn robot(s) -->
-  <include file="$(find tutorial)/launch/spawn_robot.launch" >
-    <arg name="init_position" value="-x 1 -y 1 -z 0" />
-    <arg name="robot_description"  value="khepera4_lrf_urdf" />
-    <arg name="robot_name"  value="agent1" />
-  </include>
+  <group ns="robosar_agent_bringup_node">
+    <group ns="agent1">
+      <include file="$(find tutorial)/launch/spawn_robot.launch" >
+        <arg name="init_position" value="-x 0 -y 0 -z 0" />
+        <arg name="robot_description"  value="/khepera4_lrf_urdf" />
+        <arg name="robot_name"  value="Agent1" />
+      </include>
+    </group>
+  </group>
 
 </launch>
 
