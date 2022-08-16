@@ -3,16 +3,19 @@
   <arg name="robot_name"/>
   <arg name="robot_description"/>
   <arg name="init_position"/>
-  <!-- Spawn our robot using urdf_spawner node; robot_description param should contain URDF of robot -->
-  <node name="urdf_spawner"
-        pkg="gazebo_ros"
-        type="spawn_model"
-        respawn="false"
-        output="screen"
-        args="$(arg init_position)
-              -urdf
-              -model $(arg robot_name)
-              -param $(arg robot_description)"/>
+  <!-- Spawn our robot using urdf_spawner node; /robot_description param should contain URDF of robot -->
+  <group ns="$(arg robot_name)">
+    <param name="tf_prefix" value="$(arg robot_name)" />
+    <node name="urdf_spawner"
+          pkg="gazebo_ros"
+          type="spawn_model"
+          respawn="false"
+          output="screen"
+          args="$(arg init_position)
+                -urdf
+                -model $(arg robot_name)
+                -param $(arg robot_description)"/>
+  </group>
 
 </launch>
 
