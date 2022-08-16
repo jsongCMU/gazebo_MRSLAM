@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="khepera4_lrf">
   <xacro:include filename="$(find tutorial)/urdf/khepera_body.xacro" />
   <xacro:include filename="$(find tutorial)/urdf/khepera_camera.xacro" />
   <xacro:include filename="$(find tutorial)/urdf/khepera_wheel.xacro" />
