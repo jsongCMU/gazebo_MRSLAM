@@ -1,8 +1,8 @@
 <launch>
   <node pkg="apriltags_ros" type="apriltag_detector_node" name="apriltag_detector" output="screen">
     <!-- Remap topic required by the node to custom topics -->
-    <remap from="image_rect" to="/robosar_agent_bringup_node/agent1/camera/image_raw" />
-    <remap from="camera_info" to="/robosar_agent_bringup_node/agent1/camera/camera_info" />
+    <remap from="image_rect" to="camera/image_raw" />
+    <remap from="camera_info" to="camera/camera_info" />
 
     <!-- Optional: Subscribe to the compressed stream-->
     <param name="image_transport" type="str" value="raw" />

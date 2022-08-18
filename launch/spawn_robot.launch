@@ -6,8 +6,8 @@
   <!-- Spawn our robot using urdf_spawner node; /robot_description param should contain URDF of robot -->
   <group ns="$(arg robot_name)">
     <param name="tf_prefix" value="$(arg robot_name)" />
-    <!-- TF from base_link to camera -->
-    <node pkg="tf" type="static_transform_publisher" name="base_to_camera_publisher" args="0.06 0 0.0275 -0.5 0.5 -0.5 0.5 $(arg robot_name)/base_link $(arg robot_name)/camera 10" />
+    <!-- Run AprilTagRos -->
+    <include file="$(find tutorial)/launch/apriltags_ros.launch" />
     <!-- Spawn model of robot using URDF -->
     <node name="urdf_spawner"
           pkg="gazebo_ros"
@@ -19,6 +19,9 @@
                 -model $(arg robot_name)
                 -param $(arg robot_description)"/>
   </group>
+
+  <!-- TF from base_link to camera -->
+  <node pkg="tf" type="static_transform_publisher" name="base_to_camera_publisher" args="0.06 0 0.0275 -0.5 0.5 -0.5 0.5 $(arg robot_name)/base_link $(arg robot_name)/camera 10" />
 
 </launch>
 
