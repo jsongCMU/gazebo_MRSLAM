@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <launch>
   <!-- Set name(s) -->
+  <arg name="robot1_name" value="agent1"/>
   <arg name="robot2_name" value="agent2"/>
   <arg name="robot3_name" value="agent3"/>
   <arg name="robot4_name" value="agent4"/>
   <arg name="robot5_name" value="agent5"/>
-  <arg name="robot1_name" value="agent1"/>
   <!-- Spawn robot(s) -->
   <group ns="robosar_agent_bringup_node">
     <include file="$(find tutorial)/launch/spawn_robot.launch" >
@@ -13,11 +13,11 @@
       <arg name="robot_description"  value="/khepera4_lrf_urdf" />
       <arg name="robot_name"  value="$(arg robot1_name)" />
     </include>
-    <include file="$(find tutorial)/launch/spawn_robot.launch" >
+    <!-- <include file="$(find tutorial)/launch/spawn_robot.launch" >
       <arg name="init_position" value="-x 1 -y 0 -z 0" />
       <arg name="robot_description"  value="/khepera4_lrf_urdf" />
       <arg name="robot_name"  value="$(arg robot2_name)" />
-    </include>
+    </include> -->
   </group>
 
 </launch>
