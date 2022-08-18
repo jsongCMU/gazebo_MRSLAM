@@ -20,6 +20,9 @@
   <!-- Spawn robot(s) -->
   <include file="$(find tutorial)/launch/spawn_robots.launch" />
 
+  <!-- Run AprilTagRos -->
+  <include file="$(find tutorial)/launch/apriltags_ros.launch"/>
+
   <!-- Run RVIZ -->
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find tutorial)/config/run_simulation.rviz" />
 
