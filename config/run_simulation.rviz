@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Odometry1/Shape1
-        - /TF1
         - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 180
@@ -139,15 +138,11 @@ Visualization Manager:
           Value: false
         agent1/odom:
           Value: true
-        agent1/tag_0:
-          Value: true
         agent2/base_link:
           Value: true
         agent2/camera:
           Value: false
         agent2/odom:
-          Value: true
-        agent2/tag_0:
           Value: true
         map:
           Value: true
@@ -162,13 +157,11 @@ Visualization Manager:
           agent1/odom:
             agent1/base_link:
               agent1/camera:
-                agent1/tag_0:
-                  {}
+                {}
           agent2/odom:
             agent2/base_link:
               agent2/camera:
-                agent2/tag_0:
-                  {}
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
