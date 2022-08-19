@@ -28,6 +28,10 @@
         <remap from="cmd_vel" to="/robosar_agent_bringup_node/agent1/cmd_vel"/>
   </node>
 
+  <!-- Spoof map to agent transforms -->
+  <node pkg="tf" type="static_transform_publisher" name="map_to_agent1_odom_spoof" args="0 0 0 0 0 0 1 map agent1/odom 10" />
+  <node pkg="tf" type="static_transform_publisher" name="map_to_agent2_odom_spoof" args="0 0 0 0 0 0 1 map agent2/odom 10" />
+
 </launch>
 
 
