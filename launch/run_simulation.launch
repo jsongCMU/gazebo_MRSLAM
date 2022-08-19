@@ -32,6 +32,9 @@
   <node pkg="tf" type="static_transform_publisher" name="map_to_agent1_odom_spoof" args="0 0 0 0 0 0 1 map agent1/odom 10" />
   <node pkg="tf" type="static_transform_publisher" name="map_to_agent2_odom_spoof" args="0 0 0 0 0 0 1 map agent2/odom 10" />
 
+  <!-- Run tag location estimator -->
+  <node pkg="robosar_gazebo_sim" type="tag_location_estimator" name="tag_location_estimator" />
+
 </launch>
 
 
