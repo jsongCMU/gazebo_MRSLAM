@@ -5,7 +5,6 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Odometry1/Shape1
-        - /TF1/Frames1
       Splitter Ratio: 0.5
     Tree Height: 174
   - Class: rviz/Selection
@@ -127,77 +126,6 @@ Visualization Manager:
       Topic: /robosar_agent_bringup_node/agent1/odom_data_euler
       Unreliable: false
       Value: true
-    - Class: rviz/TF
-      Enabled: true
-      Frame Timeout: 15
-      Frames:
-        All Enabled: false
-        agent1/base_link:
-          Value: true
-        agent1/camera:
-          Value: false
-        agent1/odom:
-          Value: true
-        agent2/base_link:
-          Value: true
-        agent2/camera:
-          Value: false
-        agent2/odom:
-          Value: true
-        map:
-          Value: true
-        tag_0/agent1:
-          Value: true
-        tag_0/agent2:
-          Value: true
-        tag_1/agent1:
-          Value: true
-        tag_2/agent1:
-          Value: true
-        tag_3/agent1:
-          Value: true
-        tag_4/agent1:
-          Value: true
-        tag_5/agent1:
-          Value: true
-        tag_6/agent1:
-          Value: true
-        tag_7/agent1:
-          Value: true
-      Marker Alpha: 1
-      Marker Scale: 1
-      Name: TF
-      Show Arrows: true
-      Show Axes: true
-      Show Names: true
-      Tree:
-        map:
-          agent1/odom:
-            agent1/base_link:
-              agent1/camera:
-                tag_0/agent1:
-                  {}
-                tag_1/agent1:
-                  {}
-                tag_2/agent1:
-                  {}
-                tag_3/agent1:
-                  {}
-                tag_4/agent1:
-                  {}
-                tag_5/agent1:
-                  {}
-                tag_6/agent1:
-                  {}
-                tag_7/agent1:
-                  {}
-          agent2/odom:
-            agent2/base_link:
-              agent2/camera:
-                tag_0/agent2:
-                  {}
-      Update Interval: 0
-      Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
@@ -272,6 +200,41 @@ Visualization Manager:
         Value: Arrow
       Topic: /robosar_agent_bringup_node/agent2/odom_data_euler
       Unreliable: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: true
+      Length: 1
+      Name: Axes
+      Radius: 0.009999999776482582
+      Reference Frame: <Fixed Frame>
+      Show Trail: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: true
+      Length: 0.20000000298023224
+      Name: Axes
+      Radius: 0.05000000074505806
+      Reference Frame: agent1/base_link
+      Show Trail: false
+      Value: true
+    - Alpha: 1
+      Class: rviz/Axes
+      Enabled: true
+      Length: 0.20000000298023224
+      Name: Axes
+      Radius: 0.05000000074505806
+      Reference Frame: agent2/base_link
+      Show Trail: false
+      Value: true
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: /tag_location
+      Name: Marker
+      Namespaces:
+        tag_: true
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
