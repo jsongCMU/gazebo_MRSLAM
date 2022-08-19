@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(tutorial)
+project(robosar_gazebo_sim)
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS roscpp std_msgs)

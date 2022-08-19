@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>tutorial</name>
+  <name>robosar_gazebo_sim</name>
   <version>0.0.0</version>
-  <description>The tutorial package contains example robot</description>
-  <maintainer email="nam@todo.todo">nam</maintainer>
+  <description>Simulate agents and world in Gazebo</description>
+  <maintainer email="jaekyuns@andrew.cmu.edu">Jae</maintainer>
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>

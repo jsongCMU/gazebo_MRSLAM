@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="khepera4_lrf">
-  <xacro:include filename="$(find tutorial)/urdf/khepera_body.xacro" />
-  <xacro:include filename="$(find tutorial)/urdf/khepera_camera.xacro" />
-  <xacro:include filename="$(find tutorial)/urdf/khepera_wheel.xacro" />
-  <xacro:include filename="$(find tutorial)/urdf/khepera_caster_wheel.xacro" />
-  <xacro:include filename="$(find tutorial)/urdf/khepera_lrf.xacro" />
+  <xacro:include filename="$(find robosar_gazebo_sim)/urdf/khepera_body.xacro" />
+  <xacro:include filename="$(find robosar_gazebo_sim)/urdf/khepera_camera.xacro" />
+  <xacro:include filename="$(find robosar_gazebo_sim)/urdf/khepera_wheel.xacro" />
+  <xacro:include filename="$(find robosar_gazebo_sim)/urdf/khepera_caster_wheel.xacro" />
+  <xacro:include filename="$(find robosar_gazebo_sim)/urdf/khepera_lrf.xacro" />
 
   <xacro:khepera_body />
   <xacro:khepera_caster_wheel prefix="front" offset_dir="1" />
