@@ -185,6 +185,8 @@ Visualization Manager:
           Value: true
         tag_0/agent1:
           Value: true
+        tag_1/agent1:
+          Value: true
         tag_2/agent1:
           Value: true
         tag_3/agent1:
@@ -209,6 +211,8 @@ Visualization Manager:
             agent1/base_link:
               agent1/camera:
                 tag_0/agent1:
+                  {}
+                tag_1/agent1:
                   {}
                 tag_2/agent1:
                   {}
@@ -261,10 +265,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 110.00078582763672
+      Scale: 106.26146697998047
       Target Frame: <Fixed Frame>
-      X: 1.53196382522583
-      Y: 1.028557538986206
+      X: -0.8793489336967468
+      Y: 1.1798300743103027
     Saved: ~
 Window Geometry:
   Displays:
