@@ -28,9 +28,17 @@
   <!-- Spawn robot(s) -->
   <group ns="robosar_agent_bringup_node">
     <include file="$(find robosar_gazebo_sim)/launch/spawn_robot.launch" >
-      <arg name="init_position" value="-x 1 -y -0.5 -z 0 -Y 0.8" />
+      <arg name="init_position" value="-x 1 -y -0.5 -z 0 -Y 0" />
       <arg name="robot_description"  value="/khepera4_lrf_urdf" />
       <arg name="robot_name"  value="$(arg agentN)" />
+    </include>
+  </group>
+  <group ns="robosar_agent_bringup_node">
+    <include file="$(find robosar_gazebo_sim)/launch/spawn_robot.launch" >
+      <!-- <arg name="init_position" value="-x -2 -y 0 -z 0 -Y 1.57" /> -->
+      <arg name="init_position" value="-x 1 -y 0 -z 0 -Y 0" />
+      <arg name="robot_description"  value="/khepera4_lrf_urdf" />
+      <arg name="robot_name"  value="agent2" />
     </include>
   </group>
   <!-- Run teleop for agent -->
@@ -38,11 +46,8 @@
         <remap from="cmd_vel" to="/robosar_agent_bringup_node/$(arg agentN)/cmd_vel"/>
   </node>
   <!-- Run SLAM Toolbox for mapping -->
-  <node pkg="slam_toolbox" type="async_slam_toolbox_node" name="slam_toolbox" output="screen">
+  <node pkg="slam_toolbox" type="sync_slam_toolbox_node" name="slam_toolbox" output="screen">
       <rosparam command="load" file="$(find slam_toolbox)/config/robosar_mapping.yaml" />
-      <param name="odom_frame" type="string" value="$(arg agentN)/odom" />
-      <param name="base_frame" type="string" value="$(arg agentN)/base_link" />
-      <param name="scan_topic" type="string" value="/robosar_agent_bringup_node/$(arg agentN)/feedback/scan" />
       <param name="max_laser_range" type="double" value="4.0" />
   </node>
 
