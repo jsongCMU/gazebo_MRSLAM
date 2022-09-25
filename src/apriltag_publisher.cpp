@@ -7,7 +7,7 @@
 #include "apriltag_ros/AprilTagDetectionArray.h"
 #include "apriltag_ros/AprilTagDetection.h"
 
-const std::string base_frame = "agent1/camera";
+const std::string base_frame = "agent1/base_link";
 const std::string tag_frame = "tag_1/agent1";
 const std::string topic_name = "/robosar_agent_bringup_node/agent1/feedback/apriltag";
 
