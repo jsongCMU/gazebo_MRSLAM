@@ -21,7 +21,7 @@
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find robosar_gazebo_sim)/config/run_slam_sim.rviz" />
 
   <!-- Run tag location estimator -->
-  <node pkg="robosar_gazebo_sim" type="tag_location_estimator" name="tag_location_estimator" />
+  <!-- <node pkg="robosar_gazebo_sim" type="tag_location_estimator" name="tag_location_estimator" /> -->
 
   <!-- Pick agent for mapping and teleop -->
   <arg name="agentN" value="agent1" />
