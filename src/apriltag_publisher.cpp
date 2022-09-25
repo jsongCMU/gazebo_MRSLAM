@@ -7,53 +7,79 @@
 #include "apriltag_ros/AprilTagDetectionArray.h"
 #include "apriltag_ros/AprilTagDetection.h"
 
-const std::string base_frame = "agent1/base_link";
-const std::string tag_frame = "tag_1/agent1";
-const std::string topic_name = "/robosar_agent_bringup_node/agent1/feedback/apriltag";
+// Agent info
+const std::vector<std::string> agent_names = {"agent1", "agent2"};
+const std::string base_frame_name = "base_link";
+// Tag info
+const std::string tag_name = "tag_";
+const size_t tag_amount = 20;
+// Topic info
+const std::string topic_name_prefix = "/robosar_agent_bringup_node/";
+const std::string topic_name_suffix = "/feedback/apriltag";
 
 int main(int argc, char** argv){
-  ros::init(argc, argv, "apriltag_publisher");
+  // ROS setup
+  ros::init(argc, argv, "apriltag_publisher_gazebo");
   ros::NodeHandle nh;
-  ros::Publisher pub_april = nh.advertise<apriltag_ros::AprilTagDetectionArray>(topic_name, 10);
-  tf::TransformListener tf_listener;
-  ros::Duration(3.0).sleep();
+  ros::Duration(3.0).sleep(); // Delay startup for simulator
   ros::Rate rate(10.0);
 
+  // Set up publishers
+  std::vector<ros::Publisher> publishers;
+  for(size_t agent_idx = 0; agent_idx < agent_names.size(); agent_idx++)
+  {
+    const std::string topic_name = topic_name_prefix + agent_names.at(agent_idx) + topic_name_suffix;
+    publishers.push_back(nh.advertise<apriltag_ros::AprilTagDetectionArray>(topic_name, 10));
+  }
+
+  // Set up tf buffer and listener
   tf2_ros::Buffer tfBuffer;
   tf2_ros::TransformListener tfListener(tfBuffer);
   
   while (nh.ok()){
-    // Get transform
-    geometry_msgs::TransformStamped transformStamped;
-    bool transform_found = false;
-    try{
-      transformStamped = tfBuffer.lookupTransform(base_frame, tag_frame, ros::Time(0));
-      double secs = (ros::Time::now()-transformStamped.header.stamp).toSec();
-      if(secs < 1.0)
-        transform_found = true;
-    }
-    catch (tf2::TransformException &ex) {
-      transform_found = false;
-    }
-    // If transform found
-    if(transform_found){
-      // Found transform; generate and publish message
+    for(size_t agent_idx = 0; agent_idx < agent_names.size(); agent_idx++)
+    {
+      // Generate new message for each agent
       apriltag_ros::AprilTagDetectionArray msg;
-      msg.header = transformStamped.header;
-
-      apriltag_ros::AprilTagDetection detection;
-      detection.id.push_back(1);
-      detection.size.push_back(0);
-      detection.pose.pose.pose.position.x = transformStamped.transform.translation.x;
-      detection.pose.pose.pose.position.y = transformStamped.transform.translation.y;
-      detection.pose.pose.pose.position.z = transformStamped.transform.translation.z;
-
-      msg.detections.push_back(detection);
       
-      // publish
-      pub_april.publish(msg);
-      rate.sleep();
+      // Iterate through all tag IDs
+      for(size_t tag_id = 0; tag_id < tag_amount; tag_id++)
+      {
+        // Set up names
+        const std::string base_frame = agent_names.at(agent_idx) + "/" + base_frame_name;
+        const std::string tag_frame = tag_name + std::to_string(tag_id) + "/" + agent_names.at(agent_idx);
+        
+        // Try to get transform
+        geometry_msgs::TransformStamped transformStamped;
+        bool transform_found = false;
+        try{
+          transformStamped = tfBuffer.lookupTransform(base_frame, tag_frame, ros::Time(0));
+          double secs = (ros::Time::now()-transformStamped.header.stamp).toSec();
+          if(secs < 1.0)
+            transform_found = true;
+        }
+        catch (tf2::TransformException &ex) {
+          transform_found = false;
+        }
+
+        // Publish messasge
+        if(transform_found){
+          msg.header = transformStamped.header;
+
+          apriltag_ros::AprilTagDetection detection;
+          detection.id.push_back(tag_id);
+          detection.size.push_back(0);
+          detection.pose.pose.pose.position.x = transformStamped.transform.translation.x;
+          detection.pose.pose.pose.position.y = transformStamped.transform.translation.y;
+          detection.pose.pose.pose.position.z = transformStamped.transform.translation.z;
+          msg.detections.push_back(detection);
+        }
+      }
+      // publish if data available
+      if(msg.detections.size())
+        publishers.at(agent_idx).publish(msg);
     }
+    rate.sleep();
   }
   return 0;
 };
