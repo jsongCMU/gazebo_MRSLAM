@@ -25,11 +25,12 @@ int main(int argc, char** argv){
   while (nh.ok()){
     // Get transform
     geometry_msgs::TransformStamped transformStamped;
-    bool transform_found = true;
+    bool transform_found = false;
     try{
       transformStamped = tfBuffer.lookupTransform(base_frame, tag_frame, ros::Time(0));
-      transform_found = true;
-      std::cout << "Transform found!\n";
+      double secs = (ros::Time::now()-transformStamped.header.stamp).toSec();
+      if(secs < 1.0)
+        transform_found = true;
     }
     catch (tf2::TransformException &ex) {
       transform_found = false;
