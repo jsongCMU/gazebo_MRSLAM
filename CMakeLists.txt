@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.0.2)
 project(robosar_gazebo_sim)
 
 ## Find catkin macros and libraries
-find_package(catkin REQUIRED COMPONENTS roscpp std_msgs tf geometry_msgs apriltag_ros)
+find_package(catkin REQUIRED COMPONENTS roscpp std_msgs tf2 tf2_ros tf2_geometry_msgs apriltag_ros)
 
 catkin_package(
-  CATKIN_DEPENDS roscpp std_msgs tf geometry_msgs apriltag_ros roslib
+  CATKIN_DEPENDS roscpp std_msgs tf tf2 tf2_ros tf2_geometry_msgs apriltag_ros roslib
 )
 
 ## Specify additional locations of header files
