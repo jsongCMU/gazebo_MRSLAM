@@ -23,6 +23,9 @@
   <!-- Run tag location estimator -->
   <!-- <node pkg="robosar_gazebo_sim" type="tag_location_estimator" name="tag_location_estimator" /> -->
 
+  <!-- Run AprilTag msg publisher -->
+  <node pkg="robosar_gazebo_sim" type="apriltag_publisher_gazebo" name="apriltag_publisher_gazebo" />
+
   <!-- Pick agent for mapping and teleop -->
   <arg name="agentN" value="agent1" />
   <!-- Spawn robot(s) -->
