@@ -1,5 +1,4 @@
 #include <string>
-
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
 #include <tf2_ros/transform_listener.h>
@@ -7,22 +6,34 @@
 #include "apriltag_ros/AprilTagDetectionArray.h"
 #include "apriltag_ros/AprilTagDetection.h"
 
-// Agent info
-const std::vector<std::string> agent_names = {"agent1", "agent2"};
-const std::string base_frame_name = "base_link";
-// Tag info
-const std::string tag_name = "tag_";
-const size_t tag_amount = 20;
-// Topic info
-const std::string topic_name_prefix = "/robosar_agent_bringup_node/";
-const std::string topic_name_suffix = "/feedback/apriltag";
-
 int main(int argc, char** argv){
   // ROS setup
   ros::init(argc, argv, "apriltag_publisher_gazebo");
-  ros::NodeHandle nh;
+  ros::NodeHandle nh("~");
   ros::Duration(3.0).sleep(); // Delay startup for simulator
   ros::Rate rate(10.0);
+  // Get params
+  // Agent info
+  std::vector<std::string> agent_names;
+  if(!nh.getParam("agent_names", agent_names))
+    ROS_FATAL("agent_names param not defined!");
+  std::string base_frame_name;
+  if(!nh.getParam("base_frame_name", base_frame_name))
+    ROS_FATAL("base_frame_name param not defined!");
+  // Tag info
+  std::string tag_name;
+  if(!nh.getParam("tag_name", tag_name))
+    ROS_FATAL("tag_name param not defined!");
+  int tag_amount;
+  if(!nh.getParam("tag_amount", tag_amount))
+    ROS_FATAL("tag_amount param not defined!");
+  // Topic info
+  std::string topic_name_prefix;
+  if(!nh.getParam("topic_name_prefix", topic_name_prefix))
+    ROS_FATAL("topic_name_prefix param not defined!");
+  std::string topic_name_suffix;
+  if(!nh.getParam("topic_name_suffix", topic_name_suffix))
+    ROS_FATAL("topic_name_suffix param not defined!");
 
   // Set up publishers
   std::vector<ros::Publisher> publishers;

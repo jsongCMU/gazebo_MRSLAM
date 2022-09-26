@@ -24,7 +24,9 @@
   <!-- <node pkg="robosar_gazebo_sim" type="tag_location_estimator" name="tag_location_estimator" /> -->
 
   <!-- Run AprilTag msg publisher -->
-  <node pkg="robosar_gazebo_sim" type="apriltag_publisher_gazebo" name="apriltag_publisher_gazebo" />
+  <node pkg="robosar_gazebo_sim" type="apriltag_publisher_gazebo" name="apriltag_publisher_gazebo" >
+    <rosparam command="load" file="$(find robosar_gazebo_sim)/config/apriltag_publisher_gazebo.yaml" />
+  </node>
 
   <!-- Pick agent for mapping and teleop -->
   <arg name="agentN" value="agent1" />
