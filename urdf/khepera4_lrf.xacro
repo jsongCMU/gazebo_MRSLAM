@@ -12,7 +12,7 @@
   <xacro:khepera_caster_wheel prefix="rear" offset_dir="-1" />
   <xacro:khepera_wheel prefix="left" offset_dir="1" />
   <xacro:khepera_wheel prefix="right" offset_dir="-1" />
-  <xacro:khepera_camera />
+  <!-- <xacro:khepera_camera /> -->
   <xacro:khepera_lrf />
 
   <!-- Differential drive controller -->
@@ -39,7 +39,7 @@
       <!-- Odometry frame, defaults to `odom` -->
       <odometryFrame>odom</odometryFrame>
       <!-- Robot frame to calculate odometry from, defaults to `base_footprint` -->
-      <robotBaseFrame>base_link</robotBaseFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
       <!-- Odometry source, 0 for ENCODER, 1 for WORLD, defaults to WORLD -->
       <odometrySource>0</odometrySource>
       <!-- Set to true to publish transforms for the wheel links, defaults to false -->
