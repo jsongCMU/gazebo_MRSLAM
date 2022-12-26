@@ -6,6 +6,7 @@
   <!-- Spawn our robot using urdf_spawner node; /robot_description param should contain URDF of robot -->
   <group ns="$(arg robot_name)">
     <param name="tf_prefix" value="$(arg robot_name)" />
+    <node pkg="tf" type="static_transform_publisher" name="base_laser_pub" args="0.5 0 0 0 0 0 1 $(arg robot_name)/base_footprint $(arg robot_name)/laser_frame 10" />
     <!-- Spawn model of robot using URDF -->
     <node name="urdf_spawner"
           pkg="gazebo_ros"

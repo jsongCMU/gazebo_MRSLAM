@@ -56,7 +56,7 @@
   <joint name="base_to_lrf" type="fixed">
     <parent link="base_link"/>
     <child link="lrf_link"/>
-    <origin xyz="0 0 0.1355" rpy="0 0 0"/>
+    <origin xyz="0.5 0 0.1355" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="lrf_link">
@@ -91,7 +91,7 @@
       </ray>
       <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
         <topicName>scan</topicName>
-        <frameName>base_footprint</frameName>
+        <frameName>laser_frame</frameName>
       </plugin>
     </sensor>
   </gazebo>
